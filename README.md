@@ -8,6 +8,8 @@ Reference:
 4. A survey article may help with further studying: [Deep Reinforcement Learning: A Survey](https://ieeexplore.ieee.org/document/9904958)
 5. An implementation of DRL from one of my known professors: [Optimizing Data Center Energy Efficiency via Event-Driven Deep Reinforcement Learning](https://ieeexplore.ieee.org/document/9729602)
 6. Effable explanation of special operator asterisk *: https://stackoverflow.com/questions/19339/transpose-unzip-function-inverse-of-zip/19343#19343
+7. Map() function: https://www.geeksforgeeks.org/python-map-function/
+8. Lambda() function: https://www.geeksforgeeks.org/how-to-use-if-else-elif-in-python-lambda-functions/
 
 
 Detailed explanations are inside the [DeepReinforcementLearning_DQN_Test.ipynb](https://github.com/TyBruceChen/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation/blob/main/DeepReinforcementLearning_DQN_Test.ipynb) file.
