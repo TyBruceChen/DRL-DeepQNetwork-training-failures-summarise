@@ -15,7 +15,7 @@ This repository analyzes several possible reasons for leading false positive tra
   For the same hyperparameters configuration, as shown in [Nov_05_2024_DQN_test.ipynb](Nov_05_2024_DQN_test.ipynb): \
   Model initialized randomly: \
   ![False Positive training](images/training_from_random.png) \
-  Model initialized with pre-trained parameters ([DQN_official.pt](DQN_official.pt) from [pytorch](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)) with skewed reward (terminated reward value 0 -> -5):
+  Model initialized with pre-trained parameters ([DQN_official.pt](DQN_official.pt) from [pytorch](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)) with skewed reward (terminated reward value 0 -> -5): \
   ![images/training_from_pre-trained_skewed.png](images/training_from_pre-trained_skewed.png)
 
 Reference: 
