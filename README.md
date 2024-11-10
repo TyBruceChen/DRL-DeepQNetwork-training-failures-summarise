@@ -1,5 +1,22 @@
-# Deep Reinforcement Learning with Deep Q Network: a simple implementation
-This repository is for understanding the fundamentals of Deep Q Network training from both pytorch and tensorflow methods, as an algorithm of deep reinforcement learning
+# DRL-DeepQNetwork-training-failures-summarise
+This repository analyzes several possible reasons for leading false positive training in DQN with CartPole (gymnasium). \
+**Briefly speaking**, the best way to figure out your script falls into the false positive case rather than false configuration or misunderstanding in DQN mechanisms is to **train a pre-trained** model in the same case.
+
+## Concepts
+* False positive training: the model converges to a low reward value due to non-fine-tuned hyperparameter settings, like this:
+![False Positive training](images/training_from_random.png) \
+* Target Model (/Policy/network): the model that generates temporal difference target (TD target, or target Q value: r + Q(s_(t+1))), almost with froze parameter (for stabilization and convergence speed).
+* Action Model (/Policy/network) or Policy_Net: the model that is updating frequently with stepping.
+* Q: estimation value to a given state (or station-action pair).
+
+## DQN is sensitive to hyperparameter settings and can be skewed easily:
+* Batch Size and learning Rate's influences: [DeepReinforcementLearning_DQN_Test.ipynb](DeepReinforcementLearning_DQN_Test.ipynb)
+* If the model is not instructed in the proper direction, it's highly possible to be led into false positive: \
+  For the same hyperparameters configuration, as shown in [Nov_05_2024_DQN_test.ipynb](Nov_05_2024_DQN_test.ipynb): \
+  Model initialized randomly: \
+  ![False Positive training](images/training_from_random.png) \
+  Model initialized with pre-trained parameters ([DQN_official.pt](DQN_official.pt) from [pytorch](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)) with skewed reward (terminated reward value 0 -> -5):
+  ![images/training_from_pre-trained_skewed.png](images/training_from_pre-trained_skewed.png)
 
 Reference: 
 1. [Pytorch Implementation](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html#training)
