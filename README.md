@@ -2,10 +2,10 @@
 This repository analyzes several possible reasons for leading false positive training in DQN with CartPole (gymnasium). \
 **Briefly speaking**, the best way to figure out your script falls into the false positive case rather than false configuration or misunderstanding in DQN mechanisms is to **train a pre-trained** model in the same case.
 The influential factors are:
-* penalty reward: not clearly distinguished from the normal reward
-* learning rate: not enough training episodes
-* batch size: too small -> unstable
-* clamp value
+* [penalty reward](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#different-penalty-reward-configurations-contribution-to-training-results): not clearly distinguished from the normal reward
+* [learning rate](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#learning-rate-is-significant-to-the-training-time-for-achieving-an-acceptable-model): not enough training episodes
+* [batch size](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#large-batch-size-can-stabilize-the-result): too small -> unstable
+* [clamp value](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#clamp-gradient-can-lead-to-a-stable-training-process-and-better-results)
 
 ## Concepts
 * False positive training: the model converges to a low reward value due to non-fine-tuned hyperparameter settings, like this:
@@ -21,7 +21,8 @@ The influential factors are:
   Model initialized randomly: \
   ![False Positive training](images/training_from_random.png) \
   Model initialized with pre-trained parameters ([DQN_official.pt](DQN_official.pt) from [pytorch](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)) with skewed reward (terminated reward (penalty) value 0 -> -5): \
-  ![images/training_from_pre-trained_skewed.png](images/training_from_pre-trained_skewed.png)
+  ![images/training_from_pre-trained_skewed.png](images/training_from_pre-trained_skewed.png) \
+  Thus a well configuration is required for training from random initialization!
 
 ## Env specification: [gymnasium/cartpole_v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) 
 Reward: 1 -> stay in 'balanced' threshold; 0 -> termination (out of 'balanced threshold') \
