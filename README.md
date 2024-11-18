@@ -1,14 +1,14 @@
 # DRL-DeepQNetwork-training-failures-summarise
 This repository analyzes several possible reasons for leading false positive training in DQN with CartPole (gymnasium). \
 **Briefly speaking**, the best way to figure out your script falls into the false positive case rather than false configuration or misunderstanding in DQN mechanisms is to **train a pre-trained** model in the same case.
-The influential factors are:
+The influential factors are: 
 * [penalty reward](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#different-penalty-reward-configurations-contribution-to-training-results): not clearly distinguished from the normal reward
 * [learning rate](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#learning-rate-is-significant-to-the-training-time-for-achieving-an-acceptable-model): not enough training episodes
 * [batch size](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#large-batch-size-can-stabilize-the-result): too small -> unstable
 * [clamp value](https://github.com/gasaiginko/Deep-Reinforcement-Learning-with-Deep-Q-Network--a-simple-implementation#clamp-gradient-can-lead-to-a-stable-training-process-and-better-results)
 
 ## Concepts
-* False positive training: the model converges to a low reward value due to non-fine-tuned hyperparameter settings, like this:
+* False positive training: the model converges to a low reward value due to non-fine-tuned hyperparameter settings, like this: \
 ![False Positive training](images/training_from_random.png) 
 * Target Model (/Policy/network): the model that generates temporal difference target (TD target, or target Q value: r + Q(s_(t+1))), almost with froze parameter (for stabilization and convergence speed).
 * Action Model (/Policy/network) or Policy_Net: the model that is updating frequently with stepping.
