@@ -67,7 +67,8 @@ The best configuration for this cart-pole-v1 environment is:
     clamp value: [-1,1]
 
 ## My Question: 
-Why does DRL display a sudden period of convergence and then a sudden overfitting in this experiment, unlike training computer vision models?
+Why does DRL display a sudden period of convergence and then a sudden overfitting in this experiment, unlike training computer vision models? \
+-- In value-based methods, we use an aggressive operator to change the value function: we take the maximum over Q-estimates. Consequently, the action probabilities may change dramatically for an arbitrarily small change in the estimated action values if that change results in a different action having the maximal value. (from [huggingface-DRL](https://huggingface.co/learn/deep-rl-course/en/unit4/advantages-disadvantages))
 
 Reference: 
 1. [Pytorch Implementation](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html#training)
